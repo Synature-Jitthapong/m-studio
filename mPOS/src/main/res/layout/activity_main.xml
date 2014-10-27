@@ -1,0 +1,219 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false"
+    android:divider="@android:drawable/divider_horizontal_bright"
+    android:showDividers="middle"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.6"
+        android:divider="@android:drawable/divider_horizontal_bright"
+        android:orientation="vertical"
+        android:showDividers="middle" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <EditText
+                android:id="@+id/txtBarCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:ems="10"
+                android:hint="@string/barcode"
+                android:imeOptions="actionSearch"
+                android:inputType="number"
+                android:lines="1"
+                android:maxLines="1"
+                android:minHeight="48dp"
+                android:paddingRight="96dp"
+                android:singleLine="true"
+                android:textAppearance="?android:attr/textAppearanceLargeInverse" >
+
+            </EditText>
+
+            <ImageButton
+                android:id="@+id/imgBtnToggleKey"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:onClick="toggleKeyboard"
+                android:src="@drawable/ic_action_keyboard" />
+
+            <ImageButton
+                android:id="@+id/imgBtnClearBarcode"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/imgBtnToggleKey"
+                android:minWidth="48dip"
+                android:onClick="clearBarCodeClicked"
+                android:src="@drawable/ic_action_cancel" />
+
+        </RelativeLayout>
+
+        <ExpandableListView
+            android:id="@+id/lvOrder"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/white_gray"
+            android:childDivider="@android:color/transparent" >
+
+        </ExpandableListView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white_gray"
+            android:padding="4dp" >
+
+            <ImageButton
+                android:id="@+id/btnDelOrder"
+                style="@style/GrayButtonOval"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:minHeight="48dip"
+                android:minWidth="48dip"
+                android:onClick="onClick"
+                android:src="@drawable/ic_action_discard" />
+
+            <ImageButton
+                android:id="@+id/btnClearSelOrder"
+                style="@style/GrayButtonOval"
+                android:layout_width="48dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/btnDelOrder"
+                android:minHeight="48dip"
+                android:minWidth="48dip"
+                android:onClick="onClick"
+                android:src="@drawable/ic_action_content_undo" />
+
+            <ImageButton
+                android:id="@+id/btnBillDetail"
+                style="@style/GrayButtonOval"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignTop="@+id/btnClearSelOrder"
+                android:minWidth="48dip"
+                android:onClick="onClick"
+                android:src="@drawable/ic_action_receipt_light" />
+
+        </RelativeLayout>
+
+        <TableLayout
+            android:id="@+id/tbLayoutSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp" >
+
+        </TableLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/btnCashPaid"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="cashPaidClicked"
+                android:text="@string/cash_paid" />
+
+            <Button
+                android:id="@+id/btnPayment"
+                style="@style/BlueButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="paymentClicked"
+                android:text="@string/payment"
+                android:textAppearance="?android:attr/textAppearanceMediumInverse" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <com.j1tth4.slidinglibs.SlidingTabLayout
+            android:id="@+id/sliding_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </com.j1tth4.slidinglibs.SlidingTabLayout>
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="4dp"
+            android:layout_weight="1" >
+        </android.support.v4.view.ViewPager>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/btnCancelOrder"
+                style="@style/RedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:minWidth="128dp"
+                android:onClick="cancelOrderClicked"
+                android:text="@android:string/cancel"
+                android:textAppearance="?android:attr/textAppearanceMediumInverse" />
+
+            <Button
+                android:id="@+id/buttonDiscount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:minWidth="128dp"
+                android:onClick="discountClicked"
+                android:text="@string/other_discount_short"
+                android:textAppearance="?android:attr/textAppearanceMediumInverse" />
+
+            <Button
+                android:id="@+id/btnPromotion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/buttonDiscount"
+                android:minWidth="128dp"
+                android:onClick="promotionClicked"
+                android:text="@string/promotion_short" />
+
+            <Button
+                android:id="@+id/buttonHold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toLeftOf="@+id/btnCancelOrder"
+                android:minWidth="128dp"
+                android:onClick="holdOrderClicked"
+                android:text="@string/hold"
+                android:textAppearance="?android:attr/textAppearanceMediumInverse" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
